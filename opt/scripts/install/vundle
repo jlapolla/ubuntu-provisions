@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# Install Vundle (Vim plugin manager), and download plugins listed in
+# .vimrc.
+
+set -e
+
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+VIMSCRIPT="`mktemp`"
+printf '%s\n%s\n' ':PluginInstall' ':qa' > "$VIMSCRIPT"
+vim -s "$VIMSCRIPT" > /dev/null
+rm "$VIMSCRIPT"
