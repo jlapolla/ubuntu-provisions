@@ -1,0 +1,5 @@
+# Global Git ignore.
+#
+# Place this file in your home directory.
+
+*.swp
