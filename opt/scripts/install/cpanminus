@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# Install App::cpanminus Perl package installer.
+
+set -e
+
+if [ "`id -u`" != "0" ] ; then
+	printf "%s\n" "ERROR: Must run as root."
+	exit 1
+fi
+
+curl -L https://cpanmin.us | perl - --sudo App::cpanminus
