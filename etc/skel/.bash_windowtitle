@@ -1,0 +1,16 @@
+#!/bin/bash
+#
+# Set title of xterm window.
+#
+# Place this file in your home directory.
+# Source this file by adding the following line to ~/.bashrc:
+#     [ -r ~/.bash_windowtitle ] && . ~/.bash_windowtitle
+
+# If this is an xterm set the title to host: dir
+case "$TERM" in
+	xterm*|rxvt*)
+		PS1="\[\e]0;\h: \w\a\]$PS1"
+		;;
+	*)
+		;;
+esac
