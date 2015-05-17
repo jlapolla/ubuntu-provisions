@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# Bash PATH setting.
+#
+# Place this file in your home directory.
+# Source this file by adding the following line to ~/.bashrc:
+#     [ -r ~/.bash_path ] && . ~/.bash_path
+
+PATH="$HOME/usr/local/bin:$HOME/usr/bin:$HOME/bin:$PATH"
