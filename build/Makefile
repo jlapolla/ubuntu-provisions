@@ -50,7 +50,7 @@ $(HTTPD_DIST): $(HTTPD_BUILD)
 	$(MAKE) -C httpd DESTDIR="`pwd`/httpd-dist" install
 
 httpd-dist.tar.gz: $(HTTPD_DIST)
-	(cd httpd-dist && find . ! -type d -print0) | xargs -0 tar --owner=root -C httpd-dist -czf $@
+	(cd httpd-dist && find . ! -type d -print0) | xargs -0 tar --owner=root --group=root -C httpd-dist -czf $@
 
 define SUBDIRS_TEMPLATE
 $(1)/%:
