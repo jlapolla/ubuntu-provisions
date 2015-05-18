@@ -1,8 +1,9 @@
+CPANMINUS_INSTALL := /usr/local/bin/cpanm
 VUNDLE_INSTALL := $(HOME)/.vim/bundle/Vundle.vim/README.md
 
 SUBDIRS := build downloads
 
-.PHONY: clean home-setup vundle-install
+.PHONY: clean home-setup vundle-install cpanminus-install
 
 define CLEAN_TEMPLATE
 	$(MAKE) -C $(1) clean
@@ -22,6 +23,13 @@ $(VUNDLE_INSTALL): $(HOME)/.vimrc
 	vim '+:PluginInstall' '+:qa' > /dev/null
 
 home-setup: $(addprefix $(HOME)/,$(notdir $(wildcard etc/skel/.[!.]*))) $(VUNDLE_INSTALL)
+
+cpanminus-install: $(CPANMINUS_INSTALL)
+
+$(CPANMINUS_INSTALL): downloads/perl/cpanm
+	perl $< App::cpanminus
+	test -f $(CPANMINUS_INSTALL)
+	touch -c $(CPANMINUS_INSTALL)
 
 define SUBDIRS_TEMPLATE
 $(1)/%:
