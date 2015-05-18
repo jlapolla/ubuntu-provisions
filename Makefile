@@ -17,6 +17,7 @@ $(HOME)/%: etc/skel/%
 vundle-install: $(VUNDLE_INSTALL)
 
 $(VUNDLE_INSTALL): $(HOME)/.vimrc
+	@rm -rf $(@D)
 	git clone --depth 1 https://github.com/gmarik/Vundle.vim.git $(@D)
 	vim '+:PluginInstall' '+:qa' > /dev/null
 
