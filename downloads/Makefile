@@ -31,3 +31,7 @@ $(foreach VAR,apr httpd,$(eval $(call TEMPLATE,$(VAR))))
 perl/cpanm:
 	@mkdir -p $(@D)
 	curl -Ls https://cpanmin.us > $@
+
+google/google-chrome-stable_current_amd64.deb:
+	@mkdir -p $(@D)
+	curl -s https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb > $@

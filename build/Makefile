@@ -19,6 +19,10 @@ SUBDIRS := ..
 .PHONY: clean httpd-unpack httpd-configure httpd-build httpd-install httpd-dist \
 	nodejs-unpack nodejs-configure nodejs-build nodejs-install nodejs-dist
 
+define ROOT_TEST
+@test `id -u` = 0 || (printf '%s\n' 'Need root permission. Try "sudo $(MAKE) $@".' 1>&2 ; exit 1)
+endef
+
 clean:
 	rm -rf httpd httpd-dist httpd-dist.tar.gz nodejs nodejs-dist nodejs-dist.tar.gz
 
@@ -48,6 +52,7 @@ $(HTTPD_BUILD): $(HTTPD_CONFIGURE)
 httpd-install: $(HTTPD_INSTALL)
 
 $(HTTPD_INSTALL): $(HTTPD_BUILD)
+	$(call ROOT_TEST)
 	$(MAKE) -C httpd install
 
 httpd-dist: $(HTTPD_DIST)
@@ -79,6 +84,7 @@ $(NODEJS_BUILD): $(NODEJS_CONFIGURE)
 nodejs-install: $(NODEJS_INSTALL)
 
 $(NODEJS_INSTALL): $(NODEJS_BUILD)
+	$(call ROOT_TEST)
 	$(MAKE) -C nodejs install
 	touch -c $(NODEJS_INSTALL)
 
