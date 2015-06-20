@@ -4,7 +4,7 @@ APACHE := https://www.apache.org/dist
 .PHONY: clean
 
 clean:
-	rm -rf apache perl
+	rm -rf apache perl google
 
 define TEMPLATE
 apache/$(1)/KEYS:
