@@ -4,7 +4,7 @@ APACHE := https://www.apache.org/dist
 .PHONY: clean
 
 clean:
-	rm -rf apache perl google
+	rm -rf apache nodejs perl google
 
 define TEMPLATE
 apache/$(1)/KEYS:
@@ -27,6 +27,10 @@ apache/$(1)/%.tar.gz: $$(addprefix apache/$(1)/,%.tar.gz.asc %-UNVERIFIED.tar.gz
 
 endef
 $(foreach VAR,apr httpd,$(eval $(call TEMPLATE,$(VAR))))
+
+nodejs/node-%-linux-x64.tar.gz:
+	@mkdir -p $(@D)
+	curl -s https://nodejs.org/dist/$*/node-$*-linux-x64.tar.gz > $@
 
 perl/cpanm:
 	@mkdir -p $(@D)

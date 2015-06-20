@@ -1,10 +1,11 @@
 CPANMINUS_INSTALL := /usr/local/bin/cpanm
 VUNDLE_INSTALL := $(HOME)/.vim/bundle/Vundle.vim/README.md
 GOOGLE_CHROME_INSTALL := /usr/bin/google-chrome
+NODEJS_INSTALL := /usr/local/bin/node
 
 SUBDIRS := build downloads
 
-.PHONY: clean home-setup vundle-install cpanminus-install google-chrome-install
+.PHONY: clean home-setup vundle-install cpanminus-install google-chrome-install nodejs-install
 
 define ROOT_TEST
 @test `id -u` = 0 || (printf '%s\n' 'Need root permission. Try "sudo $(MAKE) $@".' 1>&2 ; exit 1)
@@ -45,6 +46,13 @@ $(GOOGLE_CHROME_INSTALL): downloads/google/google-chrome-stable_current_amd64.de
 	apt-get install -yf
 	dpkg -i $<
 	touch -c $(GOOGLE_CHROME_INSTALL)
+
+nodejs-install: $(NODEJS_INSTALL)
+
+$(NODEJS_INSTALL): downloads/nodejs/node-v0.12.4-linux-x64.tar.gz
+	$(call ROOT_TEST)
+	tar -C /usr/local --strip-components 1 -xzf $<
+	touch -c $(NODEJS_INSTALL)
 
 define SUBDIRS_TEMPLATE
 $(1)/%:

@@ -16,6 +16,7 @@ We recommend running make targets as a regular user. Only use `sudo` when specif
 * vundle-install: Install Vundle (plugin manager for Vim) in home directory, and install Vim plugins listed in `etc/skel/.vimrc`.
 * cpanminus-install: Install cpanminus (package manager for Perl) globally.
 * google-chrome-install: Install Google Chrome (web browser) globally.
+* nodejs-install: Install Node.js (JavaScript engine) globally.
 
 ###Targets in the `build` Directory
 
