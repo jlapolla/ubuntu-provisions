@@ -28,7 +28,7 @@ We recommend running make targets as a regular user. Only use `sudo` when specif
 
 To install configuration files in your home directory, run:
 
-```
+```sh
 make home-setup
 ```
 
