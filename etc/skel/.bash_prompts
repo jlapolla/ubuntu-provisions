@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# Bash prompt strings.
+#
+# Place this file in your home directory.
+# Source this file by adding the following line to ~/.bashrc:
+#     [ -r ~/.bash_prompts ] && . ~/.bash_prompts
+
+PS1='`x=$?;if test "x$x" != x0;then printf "%s1;31m%s$x%s0m%s " \[\e[ \] \[\e[ \];fi``x="$(jobs | wc -l)";if test "x$x" != x0;then printf "%s1;35m%s($x)%s0m%s " \[\e[ \] \[\e[ \];fi`\[\e[1;33m\]\h\[\e[0m\] \[\e[1;30m\]\w\[\e[0m\] \[\e[1;3`x="$(id -u)";if test "x$x" != x0;then printf 2;else printf 1;fi`m\]\$\[\e[0m\] '
+PS2='\[\e[1;3`x="$(id -u)";if test "x$x" != x0;then printf 2;else printf 1;fi`m\]>\[\e[0m\] '
+PS4='\[\e[1;3`x="$(id -u)";if test "x$x" != x0;then printf 2;else printf 1;fi`m\]+\[\e[0m\] '

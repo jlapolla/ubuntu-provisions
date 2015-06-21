@@ -1,0 +1,4 @@
+build/*
+!build/Makefile
+downloads/*
+!downloads/Makefile
