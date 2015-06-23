@@ -33,8 +33,7 @@ colorscheme pablo
 set background=dark
 
 " Indentation settings.
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
 set smartindent
 set foldmethod=syntax
 
