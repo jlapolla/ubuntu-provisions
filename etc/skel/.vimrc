@@ -33,7 +33,9 @@ colorscheme pablo
 set background=dark
 
 " Indentation settings.
+set expandtab
 set shiftwidth=2
+set softtabstop=2
 set smartindent
 set foldmethod=syntax
 
@@ -49,3 +51,5 @@ set ruler
 au FileType gitcommit setlocal tw=72
 " Enable code folding for JavaScript (jelera/vim-javascript-syntax).
 au FileType javascript call JavaScriptFold()
+" Enable hard tabs for Makefiles.
+au FileType make setlocal noexpandtab tabstop=8
