@@ -46,6 +46,7 @@ set hlsearch
 set showcmd
 set nowrap
 set ruler
+set nojoinspaces
 
 " Git commit messages wrap at 72 characters.
 au FileType gitcommit setlocal tw=72
